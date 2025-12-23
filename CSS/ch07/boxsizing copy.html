@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boxsizing.html</title>
+    <style>
+        div{
+            width:200px; height:200px;
+            border:2px solid #ccc;
+            padding:5px;
+            background-color:bisque;}
+            .cls1{box-sizing:border-box; border-radius:2em;}
+            .cls2{box-sizing:border-box; border-radius:5px 20px 40px 80px;}
+    </style>
+</head>
+<body>
+    <div class="cls1">cls1</div>
+    <div class="cls2">cls2</div>
+</body>
+</html>

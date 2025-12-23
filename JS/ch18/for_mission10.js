@@ -1,0 +1,11 @@
+const star = parseInt(Math.random() * 5.0) + 3; //3~7사이 랜덤값
+
+console.log('star:', star);
+
+for(let i=star; i>0; i--) {
+    let str = '';
+    for(let k=1; k<=star; k++) {
+        str += k<i ? '_' : '*';        
+    }
+    console.log(str);
+}

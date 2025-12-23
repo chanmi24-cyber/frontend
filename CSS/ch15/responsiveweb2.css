@@ -1,0 +1,33 @@
+@media (max-width:768px)/*768이상에서는 한번에 보임*/{
+    nav{display:none;}
+    #menu:hover+nav{
+        display:inherit;/*header의 block을 상속받음*/
+        position:absolute;
+        padding-top:30px;
+        top:0px;
+        right:0;
+        text-align:right;
+        background-color:#eee;
+    }
+    #menu:hover+nav li{
+        padding:0.6em;
+        width:100px;
+
+
+    }
+}
+
+
+@media(min-width:769px){
+    #menu{display:none;
+    }
+    #wrapper{
+        grid-template-columns:200px 1fr;
+    }
+    header{
+        grid-column:1/-1;
+    }
+    footer{
+        grid-column:1/-1;
+    }
+}

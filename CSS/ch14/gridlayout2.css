@@ -1,0 +1,40 @@
+body{margin:0;}
+main>*{
+    padding:0.8em;
+    color:slateblue;
+    background-color: lavender;
+}
+.sec-2 div{
+    margin:1em;
+    padding:1.6em;
+    line-height:2.4em;
+    font-family:serif;
+    color:#555;
+    background-color: white;
+}
+main{display:grid;
+    gap:12px;
+    grid-template-areas:
+    'nav nav nav'
+    'aside sec-1 sec-1'
+    'aside sec-2 sec-3'
+    'footer footer footer';
+}
+nav{
+    grid-area: nav;
+}
+aside{
+    grid-area: aside;
+}
+.sec-1{
+    grid-area: sec-1;
+}
+.sec-2{
+    grid-area: sec-2;
+}
+.sec-3{
+    grid-area: sec-3;
+}
+footer{
+    grid-area: footer;
+}

@@ -1,0 +1,15 @@
+*{font-weight:bold; color:darkorange;}
+.blue{color:lightblue;}
+
+/*p태그이면서 blue클래스를 가지고 있는 엘리먼트 선택*/
+p.blue{color:slateblue;}
+p{color:olivedrab}
+*{color:plum;}
+/*p태그이면서 blue이면서 dark인것. 결국 아래와 동일하지만 선택범위가 더 좁기때문에 아래꺼로 적용!*/
+p.blue.dark{color:rgb(57, 124, 31);}
+/*blue이면서 dark인 엘리먼트를 선택*/
+.blue.dark{color:mediumblue;}
+/*id선택자가 하나만 지정하는 협소한범위라서 먼저 적용됨*/
+#red{color:tomato;}
+
+span,.dark, #red{text-decoration:underline;}

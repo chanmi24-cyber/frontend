@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>icon_editor</title>
+</head>
+<body>
+    <h1>ICON EDITOR</h1>
+    <div id="editor"></div><!--div#editor-->
+    <script>
+        //엘리먼트생성함수
+        function makeElement(name, attributes){
+            const node=document.createElement(name);
+            if(attributes){
+                for(const item in attributes){
+                    node.setAttribute(item, attributes[item]);
+                }
+            }
+            return node;
+        }
+        
+        const $editor=document.querySelector('#editor');
+
+        const attributes={
+            'type':'number',
+            'value':'100'
+        };
+        const temp=makeElement('input',attributes);
+        $editor.append(temp);//append 내 자식 뒤에 붙어라.앞에 붙이고 싶을땐 prepend();
+    </script>
+</body>
+</html>

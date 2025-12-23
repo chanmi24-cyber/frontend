@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc.html</title>
+</head>
+<body>
+    <div>
+        n1: <input type="number" id="n1"><br>
+        n2: <input type="number" id="n2">
+        <button id="btn_add">더하기</button>
+        <button id="btn_multi2">곱하기</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        const $inputN1=document.querySelector('#n1');
+        const $inputN2=document.querySelector('#n2');
+        const $btnAdd=document.querySelector('#btn_add');
+        const $result=document.querySelector('#result');
+        const $btnmulti2=document.querySelector('#btn_multi2');
+
+        console.log($inputN1, $inputN2, $btnAdd)
+
+        $btnAdd.addEventListener('click',function(){
+            const n1=$inputN1.value;
+            const n2=$inputN2.value;
+
+            console.log('n1:',n1,'n2:',n2);
+
+            const addValue=Number(n1)+Number(n2);
+            $result.innerText=addValue;
+        });
+
+        $btnmulti2.addEventListener('click',function(){
+            const n1=$inputN1.value;
+            const n2=$inputN2.value;
+
+            const multiValue2=Number(n1)*Number(n2);
+            $result.innerText=multiValue2;
+        });
+
+    </script>
+</body>
+</html>

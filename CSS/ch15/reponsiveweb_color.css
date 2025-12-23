@@ -1,0 +1,42 @@
+body{margin:0;}
+section{
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    color:rgb(255, 255, 255);
+    align-items:center;
+    justify-content:center;
+}
+div{
+    display:none;/*안보이고 공간차지도 안함*/
+    font-size:1.4em;
+}
+/*스마트폰*/
+@media(max-width:480px)/*0부터 480까지 적용*/{
+    section{background-color: tomato;}
+    .mobile{display:inherit;/*inherit는 부모 그대로 상속받는것. 여기서 부모는 section*/}
+}
+/*저해상도 태블릿*/
+@media(min-width:481px) and (max-width:767px){
+    section{background-color: olivedrab;}
+    .low-tablet{display:inherit;}
+}
+/*태블릿 세로화면*/
+@media(min-width:768px) and (max-width:1024px){
+    section{background-color: darkorchid;}
+    .port-tablet{display:inherit;}
+}
+/*태블릿 가로 및 저해상도 노트북, pc화면*/
+@media(min-width:1025px) and (max-width:1280px){
+    section{background-color: darkorange;}
+    .low-pc{display:inherit;}
+}
+/*일반 노트북, pc화면*/
+@media(min-width:1281px){
+    section{background-color: slateblue;}
+    .high-pc{display:inherit;}
+}
+/*or 조건사용*/
+@media(max-width:480px),(min-width:1281px){
+    div{color:yellow;}
+}
