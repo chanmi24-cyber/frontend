@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax01.html</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+
+        const getData=page=>{
+                fetch('https://picsum.photos/v2/list?limit=50&page=${page}')//소괄호니까 함수.
+        //fetch뒤에 .했으니까 return값을 받는다는것.
+        //뒤에 then,catch가 있으니 promise 객체주소값.
+                    .then(res=>res.json())
+                    .then(json=>procItems(json))//json타입은 배열,안에 {}는 객체.
+                    .catch(err=>console.log(err))
+
+        }
+        getData(1)
+
+        const procItems=list=>{//호출하고, list는 파라미터 이름.json을 list에 보낸다.
+            
+            const $container=document.querySelector('#container')
+            
+            list.forEach(item=>{//배열안에 있는 객체주소값.
+                const elem=makeItem(item);//elem에는 <div> DOM 객체의 주소값.
+                $container.append(elem);//$컨테이너에 elem을 append함
+            })
+        }
+
+        const makeItem=data=>{
+            console.log('data:',data);
+            const div=document.createElement('div');
+            div.innerHTML=`
+                <img src="https://picsum.photos/id/${data.id}/${parseInt(data.width*0.1)}/${parseInt(data.height*0.1)}" alt="${data.author}">
+                <div>${data.author}</div>
+            `;
+            return div;
+        }
+
+        console.log('-----------------')
+
+        const obj={
+            name:'홍길동',
+            age:22,
+            height:168.4
+        }
+        console.log(obj)
+        const jsonobj=JSON.stringify(obj);//문자열로 인지.JSON대문자사용(직렬화)
+        console.log(jsonobj)
+        const obj2=JSON.parse(jsonobj)//다시 문자,숫자로 변환.(역직렬화)
+        console.log(obj2);
+    </script>
+</body>
+</html>

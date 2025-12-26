@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>icon_editor</title>
+</head>
+<body>
+    <h1>ICON EDITOR2</h1>
+    <div id="editor"></div><!--div#editor-->
+    <script>
+        function makeElement(name, attributes){
+            const node=document.createElement(name);
+            if(attributes){
+                for(const item in attributes){
+                    node.setAttribute(item, attributes[item]);
+                }
+            }
+            return node;
+        }
+        
+        function createIconEditor(target, nx,ny){//id=editor밑에서 호출, 에디터의 자식으로 들어감
+            const $inputColor=makeElement('input',{type:'color'});// 에디터의 자식으로 들어감
+            target.append($inputColor)
+
+            const $inputColorClear=makeElement('input',{type:'button',value:'clear'})//에디터의 자식으로 들어감
+            target.append($inputColorClear)
+
+            const $table=makeElement('table');
+            target.append($table)//태그만 들어갔지만 눈에 보이지 않는 상태
+            $table.style.borderCollapse='Collapse';
+            $table.style.marginTop='10px'
+
+            for(let y=0; y<ny; y++){//줄 담당. ny=20이니까 0부터19까지 20번 실행
+                const $tr=makeElement('tr')//한번 돌때마다 tr생성
+                $table.append($tr);//실행
+                for(let x=0; x<nx; x++){//칸 담당/nx=20
+                    const $td=makeElement('td')
+                    $tr.append($td)//tr생성된 첫줄의 주소값.tr1개에 td20개.
+                    $td.style.width=$td.style.height='15px';
+                    $td.style.border='1px solid gray'
+                    
+                    //$td.addEventListener('click',e/*이벤트객체가 들어온다*/=>{ //('click',function()과 동일
+                      //  e.target.style.backgroundColor=$inputColor.value;
+                        //e.target : 이벤트가 실제로 발생한 요소
+                        //클로져 사용하지 않고 위에처럼 사용가능.메모리적으로는 이게 더 유리
+                        //$td.style.backgroundColor=$inputColor.value;//클로져(closure)
+                    //})
+
+                    $td.addEventListener('click',e=>{
+                        e.target.style.backgroundColor=e.target.style.backgroundColor
+                                                        ?'' : $inputColor.value;
+                    })
+                    $inputColorClear.addEventListener('click',()=>{
+                        const tdList=document.querySelectorAll('td');//td의 배열이 tdList로 저장: 배열=for문
+                        for(const item of tdList){ //item은 td의 엘리먼트 주소값 담김
+                            item.style.backgroundColor='';
+                        }
+                    })
+                    
+                }
+            }
+        }
+        const $editor=document.querySelector('#editor');
+        createIconEditor($editor, 20, 20);
+    </script>
+</body>
+</html>
